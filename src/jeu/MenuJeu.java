@@ -8,17 +8,10 @@
 
 package jeu; 
 
-import java.io.FileInputStream;
-
-import simplewars.affichage.PanelCarte;
-import simplewars.affichage.PanelInformations;
-import simplewars.map.Map;
-import simplewars.map.MapReader;
-
-import javazoom.jl.player.Player;
 import devintAPI.MenuAbstrait;
 
 public class MenuJeu extends MenuAbstrait {
+	private static final long serialVersionUID = 8675124682625403226L;
 
 	/** constructeur
 	 * @param title : le nom du jeu 

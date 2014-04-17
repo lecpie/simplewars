@@ -1,49 +1,22 @@
 package ressources;
 
-import java.io.FileInputStream;
-
-import javazoom.jl.player.Player;
+import t2s.SIVOXDevint;
 
 public class Audio {
+	private static final SIVOXDevint effets = new SIVOXDevint();
+	
     private static final String SND = Ressources.RESS + "sons/";
     
     public static final String MUSIQUE = SND + "musique.wav";
-    public static final String AIDE = SND + "aide.mp3";
+    public static final String AIDE = SND + "aide.wav";
+    
+    private static final String UNT = SND + "unit/";
+    
+    public static final String SONCHEVALIER = UNT + "chevalier.wav";
+    public static final String SONARCHER = UNT + "archer.wav";
+    public static final String SONPIQUIER = UNT + "piquier.wav";
     
     public static void playSound(final String url) {
-        new Thread(new Runnable() {
-          // The wrapper thread is unnecessary, unless it blocks on the
-          // Clip finishing; see comments.
-            public void run() {
-                try{
-                    FileInputStream fis = new FileInputStream(url);
-                    Player playMP3 = new Player(fis);
-                    playMP3.play();
-                }
-                catch(Exception exc){
-                    exc.printStackTrace();
-                    System.out.println("Failed to play the file.");
-                }
-            }
-        }).start();
-    }
-    
-    public static void musiqueAmbiante() {
-        new Thread(new Runnable() {
-              public void run() {
-                  try{
-                      while (true) {
-                          FileInputStream fis = new FileInputStream(MUSIQUE);
-                          Player playMP3 = new Player(fis);
-                          playMP3.play();
-                      }
-        }
-        catch(Exception exc){
-            exc.printStackTrace();
-             System.out.println("Failed to play the file.");
-
-        }
-        }
-        }).start();
+        effets.playWav(url);
     }
 }

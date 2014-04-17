@@ -26,6 +26,8 @@ import java.awt.event.*;
 
 public class Jeu extends FenetreAbstraite implements ActionListener{
 
+	private static final long serialVersionUID = 1470491642343208529L;
+
 	// le bouton pour la question
 	// est une variable d'instance car il doit être accessible 
 	// dans la méthode actionPerformed 

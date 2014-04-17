@@ -1,5 +1,6 @@
 package simplewars.unit;
 
+import ressources.Audio;
 import ressources.Images;
 
 import java.awt.image.BufferedImage;
@@ -14,12 +15,7 @@ public class Archer extends Unite {
     private static final BufferedImage ImageDroite = Images.arch_D;
     private static final BufferedImage ImageForme = Images.arch;
     
-    private static final int NBDEPLACEMENT = 1;
-
-    
-
-    private static final String SOULDSELECTED = "snd/archer.mp3";
-        
+    private static final int NBDEPLACEMENT = 1;        
 
     public Archer(Joueur joueur){
         super(joueur);
@@ -59,7 +55,7 @@ public class Archer extends Unite {
 
 	@Override
 	public String getSoundSelected() {
-		return SOULDSELECTED;
+		return Audio.SONARCHER;
 	}
 
 
