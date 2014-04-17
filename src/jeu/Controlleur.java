@@ -42,6 +42,7 @@ public class Controlleur {
 	private boolean deuxiemeClick =false;
 	private Coordonnee memoire ;
 	private static Infos infos = new Infos() ;
+	private OptionData options;
 	
 	private Joueur[] joueurs;
 	
@@ -53,8 +54,9 @@ public class Controlleur {
 		return joueurs[joueurCourrant];
 	}
 	
-	public Controlleur(Map map, Jeu frame, PanelInformations panelInfo) {
+	public Controlleur(Map map, Jeu frame, PanelInformations panelInfo, OptionData options) {
         this.map = map;
+        this.options = options;
 		initJoueurs();
 		f = frame;
 		
@@ -81,9 +83,11 @@ public class Controlleur {
 		joueurs = new Joueur[NBJOUEURS];
 		
 		// Deux joueur dans cette version du jeu
+		joueurs[0] = new Joueur(options.getNomJoueur1());
+		joueurs[1] = new Joueur(options.getNomJoueur2());
 		
 		for (int i = 0; i < joueurs.length; ++i) {
-			Joueur joueur = new Joueur ("Joueur " + (i + 1));
+			Joueur joueur = joueurs[i];
 			
 			// un joueur sur deux a des unitees regardant a gauche
 			joueur.setGauche((i % 2) != 0);

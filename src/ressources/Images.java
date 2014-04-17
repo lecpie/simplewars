@@ -17,6 +17,10 @@ public class Images {
     public static final String CHATEAU = BAT + "chateau.png";
     
     public static final String AIDE = IMG + "explications/explic.jpg";
+    
+    private static final String CHECKBOX = IMG + "checkbox/";
+    public static final String CHECKBOXCHECKED = CHECKBOX + "checked.png";
+    public static final String CHECKBOXUNCHECKED = CHECKBOX + "unchecked.png";
 
     // Unites
     public static final String ARCHERG = UNIT + "unit_archG.png";

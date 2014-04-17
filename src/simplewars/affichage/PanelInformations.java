@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.event.EventListenerList;
 
 import jeu.Controlleur;
+import jeu.OptionData;
 
 import ressources.Audio;
 import ressources.Images;
@@ -33,8 +34,6 @@ public class PanelInformations extends JPanel implements JoueurChangedListener {
 	 */
     private static final long serialVersionUID = 1L;
 
-    private static final String PATHAIDE = Audio.AIDE;
-
     private JButton tourSuivant, aide;
     private JLabel joueurActuel;
     private Dimension dimension = new Dimension(300, 300);
@@ -43,7 +42,7 @@ public class PanelInformations extends JPanel implements JoueurChangedListener {
 
     private EventListenerList listenersChangementJoueur;
 
-    public PanelInformations() {
+    public PanelInformations(OptionData options) {
         listenersChangementJoueur = new EventListenerList();
 
         tourSuivant = new JButton("suivant");
@@ -81,7 +80,7 @@ public class PanelInformations extends JPanel implements JoueurChangedListener {
         });
 
         tourSuivant.setFont(new Font("sansserif", Font.BOLD, 50));
-        joueurActuel = new JLabel("Joueur 1");
+        joueurActuel = new JLabel(options.getNomJoueur1());
         joueurActuel.setFont(new Font("sansserif", Font.BOLD, 50));
         aide.setFont(new Font("sansserif", Font.BOLD, 50));
         setLayout(new BorderLayout());

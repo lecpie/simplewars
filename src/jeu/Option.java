@@ -2,22 +2,23 @@ package jeu;
 
 
 import java.awt.BorderLayout;
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
 
+import javax.swing.DefaultCellEditor;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.table.TableCellRenderer;
 
+import ressources.Images;
 import ressources.Ressources;
 
 import devintAPI.*;
@@ -27,23 +28,23 @@ import devintAPI.*;
  */
 public class Option extends FenetreAbstraite{
 
-	private static final String NOMDEFAULTJOUEUR1 = "Joueur 1";
-	private static final String NOMDEFAULTJOUEUR2 = "Joueur 2";
+	private static final long serialVersionUID = 2906428985961751490L;
+	
+	public static final String NOMDEFAULTJOUEUR1 = "Joueur 1";
+	public static final String NOMDEFAULTJOUEUR2 = "Joueur 2";
+	public static final boolean MUSIQUEDEFAULT = true;
 	
 	private static final String TEXTJOUEUR1 = "Nom du Joueur 1";
 	private static final String TEXTJOUEUR2 = "Nom du Joueur 2";
+	private static final String TEXTEMUSIQUE = "Musique";
 	private static final String TEXTVALIDER = "Valider";
-	
-	private static final String KEYJ1 = "joueur1";
-	private static final String KEYJ2 = "joueur2";
 	
 	private JTextArea champNomJoueur1;
 	private JTextArea champNomJoueur2;
-	
+	private JCheckBox boxMusique;
 	
 	// Donnees options
-	private String nomJoueur1;
-	private String nomJoueur2;
+	private OptionData optionData;
 	
     public Option(String title) {
     	super(title);
@@ -68,66 +69,40 @@ public class Option extends FenetreAbstraite{
 	protected  String wavAide() {
 		return "../ressources/sons/aide.wav";
 	}
-	
-	private void loadOptions() {
-		try {
-			File ficOptions = new File(Ressources.OPTIONS);
-			
-			if (!ficOptions.exists()) {
-				return;
-			}
-			
-			BufferedReader br = new BufferedReader(new FileReader(ficOptions));
-			
-			for (String line; (line = br.readLine()) != null; ) {
-				int firstSpace = line.indexOf(' ');
-				String[] opt = { line.substring(0, firstSpace), line.substring(firstSpace + 1) };
-				switch (opt[0]) {
-				case KEYJ1:
-					nomJoueur1 = opt[1];
-					break;
-				case KEYJ2:
-					nomJoueur2 = opt[1];
-					break;
-				}
-			}
-			
-			br.close();
-
-		} catch (Exception e) {
-			System.err.println("Erreur de chargement des options");
-		}
-		
-	}
 
     public void init() {
-    	loadOptions();
+    	optionData = new OptionData();
+    	optionData.readOptions();
     	
     	setLayout(new BorderLayout());
     	
     	JPanel panneauOptions = new JPanel();
-    	panneauOptions.setLayout(new GridLayout(2, 1));
+    	panneauOptions.setLayout(new GridLayout(3, 2));
     	
-    	JPanel panneauNoms = new JPanel();
-    	panneauNoms.setLayout(new GridLayout(2, 2));
     	
     	JLabel labelJoueur1 = new JLabel(TEXTJOUEUR1);
     	JLabel labelJoueur2 = new JLabel(TEXTJOUEUR2);
-    	champNomJoueur1 = new JTextArea((nomJoueur1 == null) ? NOMDEFAULTJOUEUR1 : nomJoueur1);
-    	champNomJoueur2 = new JTextArea((nomJoueur2 == null) ? NOMDEFAULTJOUEUR2 : nomJoueur2);
+    	JLabel labelMusique = new JLabel(TEXTEMUSIQUE);
     	
-    	panneauNoms.add(labelJoueur1); panneauNoms.add (champNomJoueur1);
-    	panneauNoms.add(labelJoueur2); panneauNoms.add (champNomJoueur2);
+    	champNomJoueur1 = new JTextArea(optionData.getNomJoueur1());
+    	champNomJoueur2 = new JTextArea(optionData.getNomJoueur2());
     	
-
+    	boxMusique = configureCheckbox();
+    	boxMusique.setSelected(optionData.isqMusique());
     	
-    	panneauOptions.add(panneauNoms);
-    	
+    	panneauOptions.add(labelJoueur1); panneauOptions.add (champNomJoueur1);
+    	panneauOptions.add(labelJoueur2); panneauOptions.add (champNomJoueur2);
+    	panneauOptions.add(labelMusique); panneauOptions.add(boxMusique);
     	
     	JButton boutonValider = new JButton(TEXTVALIDER);
     	boutonValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ecrireOptions();
+				optionData.setNomJoueur1(champNomJoueur1.getText());
+				optionData.setNomJoueur2(champNomJoueur2.getText());
+				optionData.setqMusique(boxMusique.isSelected());
+				optionData.writeOptions();
+				
+				dispose();
 			}
     	});
     	
@@ -135,34 +110,29 @@ public class Option extends FenetreAbstraite{
     	this.add(boutonValider, BorderLayout.SOUTH);
     	
     	// Appliquer font
-    	for (JComponent cmp : new JComponent[] {labelJoueur1, labelJoueur2, 
-    			champNomJoueur1, champNomJoueur2, boutonValider}) {
+    	for (JComponent cmp : new JComponent[] {labelJoueur1, labelJoueur2, labelMusique,
+    			champNomJoueur1, champNomJoueur2, boutonValider, boxMusique}) {
     		cmp.setFont(Ressources.FONT);
     	}
     }
     
-    private void ecrireOptions() {
-		try {
+    private JCheckBox configureCheckbox() {
+    	Icon normal = new ImageIcon(Images.CHECKBOXUNCHECKED);
+    	Icon selected = new ImageIcon(Images.CHECKBOXCHECKED);
+    	JTable table = new JTable();
+    	//table.setRowHeight(...);
+
+    	TableCellRenderer renderer = table.getDefaultRenderer(Boolean.class);
+    	JCheckBox checkBoxRenderer = (JCheckBox)renderer;
+    	checkBoxRenderer.setIcon( normal );
+    	checkBoxRenderer.setSelectedIcon( selected );
+
+    	DefaultCellEditor editor = (DefaultCellEditor)table.getDefaultEditor(Boolean.class);
+    	JCheckBox checkBoxEditor = (JCheckBox)editor.getComponent();
+    	checkBoxEditor.setIcon( normal );
+    	checkBoxEditor.setSelectedIcon( selected );
     	
-	    	File ficOptions = new File(Ressources.OPTIONS);
-			
-			if (!ficOptions.exists()) {
-				ficOptions.createNewFile();
-			}
-		
-			BufferedWriter br = new BufferedWriter(new FileWriter(ficOptions));
-			
-			br.write(KEYJ1 + " " + champNomJoueur1.getText());
-			br.newLine();
-			
-			br.write(KEYJ2 + " " + champNomJoueur2.getText());
-			br.newLine();
-			
-			br.close();
-		
-		} catch (Exception e) {
-			e.getMessage();
-		}
+    	return checkBoxEditor;
     }
     
 	/**
