@@ -58,6 +58,8 @@ public class Jeu extends FenetreAbstraite implements ActionListener{
 	    
 	    panelCarte.setControl(c);
 	    panelInfo.setControl(c);
+	    setSize(this.getHeight()+200,this.getHeight());
+	    panelInfo.setLocation(this.getHeight(),200);
 	    
 	    if (qmusique) {
 	        musique.loopWav(Audio.MUSIQUE);
