@@ -39,6 +39,8 @@ import java.io.IOException;
 
 public class Fichier extends FenetreAbstraite implements ActionListener{
 
+	private static final long serialVersionUID = -5917727116516671688L;
+
 	// le bouton pour créer un fichier
 	// doit être accessible dans la méthode actionPerformed 
 	private JButton ecrire;

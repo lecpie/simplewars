@@ -1,5 +1,6 @@
 package simplewars.unit;
 
+import ressources.Audio;
 import ressources.Images;
 
 import java.awt.image.BufferedImage;
@@ -15,11 +16,9 @@ public class Piquier extends Unite{
     private static final BufferedImage ImageForme = Images.piq;
     
     private static final String ABREV = "piq";
-    
-    private static final String SOUNDSELECTED = "snd/piquier.mp3";
-    
+        
     public String getSoundSelected() {
-    	return SOUNDSELECTED;
+    	return Audio.SONPIQUIER;
     }
     
     public Piquier (Joueur joueur){

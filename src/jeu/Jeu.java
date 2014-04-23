@@ -24,12 +24,9 @@ import java.awt.event.*;
  *
  */
 
-public class Jeu extends FenetreAbstraite implements ActionListener{
+public class Jeu extends FenetreAbstraite {
 
-	// le bouton pour la question
-	// est une variable d'instance car il doit être accessible 
-	// dans la méthode actionPerformed 
-	private JButton question;
+	private static final long serialVersionUID = 1470491642343208529L;
 	
 	// un label
 	// est une variable d'instance car il doit être accessible 
@@ -38,30 +35,33 @@ public class Jeu extends FenetreAbstraite implements ActionListener{
 	
 	private SIVOXDevint musique;
 	
+	OptionData options;
+	
 	// appel au constructeur de la classe mère
     public Jeu(String title) {
     	super(title);
     	
     	musique = new SIVOXDevint();
     	
+    	options = new OptionData();
+    	options.readOptions();
+    	
     	int iMap = 0;
     	
-		boolean qmusique = true;
-
 	    MapReader mapReader = new MapReader();
 		Map map = mapReader.readMap(Maps.getMap(iMap));
 		
 		PanelCarte panelCarte = new PanelCarte(map);
-		PanelInformations panelInfo = new PanelInformations();
+		PanelInformations panelInfo = new PanelInformations(options);
 	    	    
-	    Controlleur c = new Controlleur(map, this, panelInfo);
+	    Controlleur c = new Controlleur(map, this, panelInfo, options);
 	    
 	    panelCarte.setControl(c);
 	    panelInfo.setControl(c);
 	    setSize(this.getHeight()+200,this.getHeight());
 	    panelInfo.setLocation(this.getHeight(),200);
 	    
-	    if (qmusique) {
+	    if (options.isqMusique()) {
 	        musique.loopWav(Audio.MUSIQUE);
 	    }
         this.setLayout(new BorderLayout());
@@ -95,24 +95,6 @@ public class Jeu extends FenetreAbstraite implements ActionListener{
     protected void init() {
     	
    }
-
-    // lire la question si clic sur le bouton 
-    public void actionPerformed(ActionEvent ae){
-       	// toujours stopper la voix avant de parler
-    	voix.stop();
-    	// on récupère la source de l'évènement
-     	Object source = ae.getSource();
-     	// si c'est le bouton "question" on lit la question
-     	// le contenu des questions est variable donc on les lit avec SI_VOX
-    	if (source.equals(question)) {
-    		String text = "les questions sont longues et ont un contenu variable.";
-    		text += "Il ne faut pas générer un fichier wave mais lire directement les textes";
-    		voix.playText(text);
-    	}	
-    	// on redonne le focus au JFrame principal 
-    	// (après un clic, le focus est sur le bouton)
-    	this.requestFocus();
-    }
  
     // évènements clavier
     public void keyPressed(KeyEvent e) {
