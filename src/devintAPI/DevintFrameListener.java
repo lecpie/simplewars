@@ -22,6 +22,10 @@ import t2s.SIVOXDevint;
  */
 public abstract class DevintFrameListener extends JFrame implements KeyListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	// la voix pour annoncer les actions
     protected SIVOXDevint voix; 
 

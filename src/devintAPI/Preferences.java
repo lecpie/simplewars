@@ -13,7 +13,6 @@ import java.util.List;
 
 import t2s.SIVOXDevint;
 
-import devintAPI.FenetreAbstraite;
 
 /**
  * classe pour stocker les préférences de couleurs et de voix SIVOX

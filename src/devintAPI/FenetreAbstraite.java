@@ -22,6 +22,11 @@ import java.awt.event.*;
 public abstract class FenetreAbstraite extends  DevintFrameListener{
    
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
      * @param title : titre de la fenêtre
      */
     public FenetreAbstraite(String title) {
