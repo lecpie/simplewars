@@ -24,7 +24,7 @@ public class PanelCarte extends JPanel {
      */
     public PanelCarte(Map map){
         
-        
+    	
         largeur = map.getLargeur();
         hauteur = map.getHauteur();
                 
