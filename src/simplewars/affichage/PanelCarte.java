@@ -1,6 +1,8 @@
 package simplewars.affichage;
 
 import java.awt.GridLayout;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import simplewars.map.Coordonnee;
 import simplewars.map.Map;
@@ -9,7 +11,7 @@ import javax.swing.JPanel;
 
 import jeu.Controlleur;
 
-public class PanelCarte extends JPanel {
+public class PanelCarte extends JPanel  {
 	/**
 	 * 
 	 */
@@ -18,6 +20,14 @@ public class PanelCarte extends JPanel {
     private int largeur,hauteur;
     private AfficheurCellule[][] tableauDeCellules;
     
+    public AfficheurCellule[][] getTableauDeCellules() {
+        return tableauDeCellules;
+    }
+
+    public void setTableauDeCellules(AfficheurCellule[][] tableauDeCellules) {
+        this.tableauDeCellules = tableauDeCellules;
+    }
+
     /**
      * Panel sur lequel est affiche la carte de jeu
      * @param map
@@ -51,5 +61,14 @@ public class PanelCarte extends JPanel {
 
             }
         }     
+    }
+
+
+    public void changeDisplayShape (){
+        for (int i = 0; i < tableauDeCellules.length ; i++) {
+            for (int j = 0; j < tableauDeCellules[i].length ; j++){
+                tableauDeCellules[i][j].displayShape();
+            }
+        }  
     }
 }
