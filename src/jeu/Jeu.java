@@ -58,6 +58,7 @@ public class Jeu extends FenetreAbstraite {
 	    
 	    panelCarte.setControl(c);
 	    panelInfo.setControl(c);
+
 	    
 	    if (options.isqMusique()) {
 	        musique.loopWav(Audio.MUSIQUE);
