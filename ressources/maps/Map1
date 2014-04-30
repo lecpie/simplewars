@@ -1,5 +1,5 @@
-largeur 10
-hauteur 7
+largeur 7
+hauteur 10
 
 
 Map
@@ -13,6 +13,7 @@ Map
 
 
 
+
 Chateaux
 chateau 0 0
-chateau 9 6
+chateau 2 3
