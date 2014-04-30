@@ -27,7 +27,7 @@ import simplewars.unit.*;
  * @author Benjamin CLAQUIN
  *
  */
-public class AfficheurCellule extends JPanel implements MouseListener,ColourCaseListener{
+public class AfficheurCellule extends JPanel implements MouseListener,ColourCaseListener,KeyListener{
 
     /**
 	 * 
@@ -49,7 +49,7 @@ public class AfficheurCellule extends JPanel implements MouseListener,ColourCase
 
     public AfficheurCellule(Cellule cellule) {
         this.addMouseListener(this);
-
+        this.addKeyListener(this);
         this.cellule=cellule;
         try {
         this.coordonnee=cellule.getCoordonnee();
@@ -191,8 +191,21 @@ public class AfficheurCellule extends JPanel implements MouseListener,ColourCase
             this.belongToChampDeMovement=false;
     }
 
-public void displayShape(){
-    displayShape = displayShape ? false:true;
-}
+    @Override
+    public void keyPressed(KeyEvent arg0) {
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        displayShape=displayShape?false:true;
+        System.out.println("lel");
+    }
+
 
 }

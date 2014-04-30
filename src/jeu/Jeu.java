@@ -34,7 +34,7 @@ public class Jeu extends FenetreAbstraite {
 	private JTextArea lb1;
 	
 	private SIVOXDevint musique;
-	private PanelCarte panelCarte;
+	
 	OptionData options;
 	
 	// appel au constructeur de la classe mère
@@ -51,7 +51,7 @@ public class Jeu extends FenetreAbstraite {
 	    MapReader mapReader = new MapReader();
 		Map map = mapReader.readMap(Maps.getMap(iMap));
 		
-		panelCarte = new PanelCarte(map);
+		PanelCarte panelCarte = new PanelCarte(map);
 		PanelInformations panelInfo = new PanelInformations(options);
 	    	    
 	    Controlleur c = new Controlleur(map, this, panelInfo, options);
@@ -102,7 +102,6 @@ public class Jeu extends FenetreAbstraite {
     	if (e.getKeyCode()==KeyEvent.VK_F5){
     	   	voix.playText("Vous venez d'appuyer sur EFFE 5");
     	}
-    	panelCarte.changeDisplayShape();
     }
     
 	/**
