@@ -14,6 +14,7 @@ public class Archer extends Unite {
     private static final BufferedImage ImageGauche = Images.arch_G;
     private static final BufferedImage ImageDroite = Images.arch_D;
     private static final BufferedImage ImageForme = Images.arch;
+    private static final BufferedImage ImageForme_c = Images.arch_c;
     
     private static final int NBDEPLACEMENT = 1;        
 
@@ -52,7 +53,12 @@ public class Archer extends Unite {
         return ImageForme;
     }
 
-
+    @Override
+    public BufferedImage getImageFormeCreuse() {
+        // TODO Auto-generated method stub
+        return ImageForme_c;
+    }
+    
 	@Override
 	public String getSoundSelected() {
 		return Audio.SONARCHER;

@@ -14,6 +14,7 @@ public class Piquier extends Unite{
     private static final BufferedImage ImageGauche = Images.piq_G;
     private static final BufferedImage ImageDroite = Images.piq_D;
     private static final BufferedImage ImageForme = Images.piq;
+    private static final BufferedImage ImageForme_c = Images.piq_c;
     
     private static final String ABREV = "piq";
         
@@ -57,5 +58,12 @@ public class Piquier extends Unite{
     public BufferedImage getImageForme() {
         // TODO Auto-generated method stub
         return ImageForme;
+    }
+    
+    
+    @Override
+    public BufferedImage getImageFormeCreuse() {
+        // TODO Auto-generated method stub
+        return ImageForme_c;
     }
 }
