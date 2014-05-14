@@ -36,6 +36,11 @@ public class Images {
     public static final String PIQUIER = UNIT + "carre.png";
     public static final String CHEVALIER = UNIT + "rond.png";
 
+            // formes creuses
+    public static final String ARCHER_CREUX = UNIT + "triangle_creux.png";
+    public static final String PIQUIER_CREUX = UNIT + "carre_creux.png";
+    public static final String CHEVALIER_CREUX = UNIT + "rond_creux.png";
+    
     // Terrain
 
     // Terrain praticable
@@ -57,7 +62,7 @@ public class Images {
     public static final String selecNOIR = selecteur + "/dejadeplace.png";
 
     public static BufferedImage selecteurJauneB, arch_G, arch_D, chev_D,
-            chev_G, piq_D, piq_G, arch, piq, chev;
+            chev_G, piq_D, piq_G, arch, piq, chev,arch_c,piq_c,chev_c;
 
     // Set les images
     static {
@@ -84,6 +89,9 @@ public class Images {
             arch = ImageIO.read(new File(ARCHER));
             piq = ImageIO.read(new File(PIQUIER));
             chev = ImageIO.read(new File(CHEVALIER));
+            arch_c = ImageIO.read(new File(ARCHER_CREUX));
+            piq_c = ImageIO.read(new File(PIQUIER_CREUX));
+            chev_c = ImageIO.read(new File(CHEVALIER_CREUX));
 
         } catch (Exception e) {
             System.err.println("image non trouvee");
