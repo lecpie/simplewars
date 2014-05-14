@@ -77,6 +77,8 @@ public class Controlleur {
 	    joueurCourrant = (joueurCourrant + 1) % joueurs.length;
 	    getJoueurCourant().resetDejaDeplace();
 	    getJoueurCourant().getChateau().setProduced(false);
+	    deuxiemeClick = false;
+	    unColourAllCorrectCase();
 	}
 	
 	public void initJoueurs() {
