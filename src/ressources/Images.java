@@ -18,6 +18,10 @@ public class Images {
     
     public static final String AIDE = IMG + "explications/explic.jpg";
     
+    private static final String CURSOR = IMG + "cursor/";
+    
+    public static final String CURSORBIG = CURSOR + "cursor.png";
+    
     private static final String CHECKBOX = IMG + "checkbox/";
     public static final String CHECKBOXCHECKED = CHECKBOX + "checked.png";
     public static final String CHECKBOXUNCHECKED = CHECKBOX + "unchecked.png";
