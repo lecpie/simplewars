@@ -71,6 +71,14 @@ public class Jeu extends FenetreAbstraite {
         this.add(panelCarte,BorderLayout.CENTER);
         this.add(panelInfo,BorderLayout.EAST);
         
+        addWindowListener(new WindowAdapter()
+        {
+            public void windowClosing(WindowEvent e)
+            {
+                musique.stop();
+            }
+        });
+        
         setVisible(true);
      }
     
