@@ -74,10 +74,11 @@ public class Controlleur {
 	
 	
 	public void joueurSuivant() {
+		 deuxiemeClick = false;
 	    joueurCourrant = (joueurCourrant + 1) % joueurs.length;
 	    getJoueurCourant().resetDejaDeplace();
 	    getJoueurCourant().getChateau().setProduced(false);
-	    deuxiemeClick = false;
+	   
 	    unColourAllCorrectCase();
 	}
 	
@@ -346,7 +347,7 @@ public class Controlleur {
 	}
 	
 	public void click(Coordonnee coordonnee) {
-		
+		System.err.println(deuxiemeClick);
 		Cellule cellule = getCellule(coordonnee);
         // Si on clique sur une cellule qui a un batiment au premier clic
         if(cellule.contientBatiment() && cellule.getBatiment().getJoueur().equals(getJoueurCourant()))
