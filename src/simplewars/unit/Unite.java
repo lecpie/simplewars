@@ -19,11 +19,15 @@ public abstract class Unite {
 	
 	public Unite (Joueur j){
         this.joueur = j;
-        bufferedImageForme=getImageForme();
-        if(j.isGauche())
+        
+        if(j.isGauche()){
             bufferedImage=getImageGauche();
-        else
+            setBufferedImageForme(getImageForme());    
+        }
+        else{
             bufferedImage=getImageDroite();
+            setBufferedImageForme(getImageFormeCreuse());
+        }
 	}
 	
 	
@@ -64,6 +68,7 @@ public abstract class Unite {
     public abstract BufferedImage getImageDroite();
     public abstract BufferedImage getImageGauche();
     public abstract BufferedImage getImageForme();
+    public abstract BufferedImage getImageFormeCreuse();
     
     public boolean isDejaDeplace() {
         return dejaDeplace;
@@ -79,5 +84,15 @@ public abstract class Unite {
 
     public void setJoueur(Joueur joueur) {
         this.joueur = joueur;
+    }
+
+
+    public BufferedImage getBufferedImageForme() {
+        return bufferedImageForme;
+    }
+
+
+    public void setBufferedImageForme(BufferedImage bufferedImageForme) {
+        this.bufferedImageForme = bufferedImageForme;
     }	
 }

@@ -14,6 +14,7 @@ public class Chevalier extends Unite {
     private static final BufferedImage ImageGauche = Images.chev_G;
     private static final BufferedImage ImageDroite = Images.chev_D;
     private static final BufferedImage ImageForme = Images.chev;
+    private static final BufferedImage ImageForme_c = Images.chev_c;
     
     private static final int NBDEPLACEMENT = 2;
         
@@ -57,5 +58,11 @@ public class Chevalier extends Unite {
     public BufferedImage getImageForme() {
         // TODO Auto-generated method stub
         return ImageForme;
+    }
+    
+    @Override
+    public BufferedImage getImageFormeCreuse() {
+        // TODO Auto-generated method stub
+        return ImageForme_c;
     }
 }
