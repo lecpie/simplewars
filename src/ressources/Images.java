@@ -60,9 +60,10 @@ public class Images {
     public static final String selecROUGE = selecteur + "/selectaennemi.png";
     public static final String selecBLEU = selecteur + "/selecta.png";
     public static final String selecNOIR = selecteur + "/dejadeplace.png";
+    public static final String selecHACHURES = selecteur + "/hachures.png";
 
     public static BufferedImage selecteurJauneB, arch_G, arch_D, chev_D,
-            chev_G, piq_D, piq_G, arch, piq, chev,arch_c,piq_c,chev_c;
+            chev_G, piq_D, piq_G, arch, piq, chev,arch_c,piq_c,chev_c,selecHachures;
 
     // Set les images
     static {
@@ -79,6 +80,8 @@ public class Images {
                     selecBLEU));
             final BufferedImage selecteurNoirB = ImageIO.read(new File(
                     selecNOIR));
+            final BufferedImage selecteurHachures = ImageIO.read(new File(
+                    selecHACHURES));
 
             arch_G = ImageIO.read(new File(ARCHERG));
             arch_D = ImageIO.read(new File(ARCHERD));

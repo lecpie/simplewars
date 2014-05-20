@@ -27,7 +27,7 @@ import simplewars.unit.*;
  * @author Benjamin CLAQUIN
  *
  */
-public class AfficheurCellule extends JPanel implements MouseListener,ColourCaseListener,KeyListener{
+public class AfficheurCellule extends JPanel implements MouseListener,ColourCaseListener{
 
     /**
 	 * 
@@ -41,7 +41,7 @@ public class AfficheurCellule extends JPanel implements MouseListener,ColourCase
 
     
     
-    private boolean displayShape = true;
+    private Modes modeDeVisibilite = Modes.PEUVISIBLE;
     
     
    private final int BORDERBOLD = 3;
@@ -49,7 +49,7 @@ public class AfficheurCellule extends JPanel implements MouseListener,ColourCase
 
     public AfficheurCellule(Cellule cellule) {
         this.addMouseListener(this);
-        this.addKeyListener(this);
+        
         this.cellule=cellule;
         try {
         this.coordonnee=cellule.getCoordonnee();
@@ -123,10 +123,15 @@ public class AfficheurCellule extends JPanel implements MouseListener,ColourCase
                 setImage(Images.selecROUGE,g);
             }
             
-                   
-                BufferedImage bI= displayShape? u.getImageForme():u.getBufferedImage();
+             if(modeDeVisibilite==Modes.PEUVISIBLE){      
+                BufferedImage bI= u.getBufferedImage();
                 g.drawImage(bI,2*BORDERBOLD,2*BORDERBOLD, getWidth()-4*BORDERBOLD, getHeight()-4*BORDERBOLD,this);
-                
+             }
+             else {
+                 BufferedImage bI= u.getBufferedImageForme();
+                 g.drawImage(bI,2*BORDERBOLD,2*BORDERBOLD, getWidth()-4*BORDERBOLD, getHeight()-4*BORDERBOLD,this); 
+             }
+             
         }
     }
     
@@ -191,21 +196,6 @@ public class AfficheurCellule extends JPanel implements MouseListener,ColourCase
             this.belongToChampDeMovement=false;
     }
 
-    @Override
-    public void keyPressed(KeyEvent arg0) {
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-        displayShape=displayShape?false:true;
-        System.out.println("lel");
-    }
-
+    
 
 }
