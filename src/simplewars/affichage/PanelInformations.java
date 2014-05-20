@@ -2,11 +2,13 @@ package simplewars.affichage;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Dimension;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -34,7 +36,7 @@ public class PanelInformations extends JPanel implements JoueurChangedListener {
 	 */
     private static final long serialVersionUID = 1L;
 
-    private JButton tourSuivant, aide;
+    private JButton tourSuivant, regles, controles;
     private JLabel joueurActuel;
     private Dimension dimension = new Dimension(300, 300);
 
@@ -46,8 +48,19 @@ public class PanelInformations extends JPanel implements JoueurChangedListener {
         listenersChangementJoueur = new EventListenerList();
 
         tourSuivant = new JButton("suivant");
-        aide = new JButton("aide");
-        aide.addActionListener(new ActionListener() {
+        
+        JPanel panneauInstructions = new JPanel();
+        panneauInstructions.setLayout(new GridLayout(2, 1));
+        
+        controles = new JButton("Controles");
+        controles.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Audio.playSound(Audio.REGLES);
+			}
+        });
+        
+        regles = new JButton("Regles");
+        regles.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 aide();
             }
@@ -55,7 +68,7 @@ public class PanelInformations extends JPanel implements JoueurChangedListener {
             private void aide() {
                 Audio.playSound(Audio.AIDE);
 
-                aide.setVisible(true);
+                regles.setVisible(true);
             }
         });
 
@@ -65,7 +78,7 @@ public class PanelInformations extends JPanel implements JoueurChangedListener {
             }
         });
 
-        aide.addActionListener(new ActionListener() {
+        regles.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 JFrame aide = new JFrame();
                 aide.setSize(800, 1000);
@@ -78,17 +91,24 @@ public class PanelInformations extends JPanel implements JoueurChangedListener {
                 aide.setVisible(true);
             }
         });
-
-        tourSuivant.setFont(new Font("sansserif", Font.BOLD, 50));
+        
         joueurActuel = new JLabel(options.getNomJoueur1());
-        joueurActuel.setFont(new Font("sansserif", Font.BOLD, 50));
-        aide.setFont(new Font("sansserif", Font.BOLD, 50));
+
+        for (JComponent c : new JComponent[] {tourSuivant, regles, controles, joueurActuel}) {
+        	c.setFont(new Font("sansserif", Font.BOLD, 50));
+        }
+        
+
         setLayout(new BorderLayout());
 
         add(joueurActuel, BorderLayout.CENTER);
 
         add(tourSuivant, BorderLayout.NORTH);
-        add(aide, BorderLayout.SOUTH);
+        
+        panneauInstructions.add(regles);
+        panneauInstructions.add(controles);
+        
+        add(panneauInstructions, BorderLayout.SOUTH);
 
     }
 
