@@ -10,6 +10,8 @@ public class Audio {
     public static final String MUSIQUE = SND + "musique.wav";
     public static final String AIDE = SND + "aide.wav";
     public static final String REGLES = SND + "aideF1.wav";
+    public static final String ACCUEIL = SND + "accueil.wav";
+    public static final String ACCUEILOPT = SND + "accueilOption.wav";
     
     private static final String UNT = SND + "unit/";
     

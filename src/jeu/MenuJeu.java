@@ -8,6 +8,7 @@
 
 package jeu; 
 
+import ressources.Audio;
 import devintAPI.MenuAbstrait;
 
 public class MenuJeu extends MenuAbstrait {
@@ -43,12 +44,12 @@ public class MenuJeu extends MenuAbstrait {
 	// renvoie le fichier wave contenant le message d'accueil
 	// ces fichiers doivent être placés dans ressources/sons/
 	protected  String wavAccueil() {
-		return "../ressources/sons/accueil.wav";
+		return Audio.ACCUEIL;
 	}
 
 	// renvoie le fichier wave contenant la règle du jeu
 	protected  String wavRegleJeu() {
-		return "../ressources/sons/accueil.wav";
+		return Audio.REGLES;
 	}
 	
 }
