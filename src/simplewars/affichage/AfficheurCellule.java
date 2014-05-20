@@ -152,7 +152,7 @@ public class AfficheurCellule extends JPanel implements MouseListener,ColourCase
 	}
 	
     public void mouseClicked(MouseEvent arg0) {
-    	controlleur.click(coordonnee);
+    	
     }
 
     @Override
@@ -170,7 +170,7 @@ public class AfficheurCellule extends JPanel implements MouseListener,ColourCase
     }
 
     public void mouseReleased(MouseEvent arg0) {
-        
+    	controlleur.click(coordonnee);
     }
     
     public void setControl(Controlleur c)

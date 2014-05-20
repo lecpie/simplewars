@@ -3,6 +3,7 @@ package jeu;
 import javax.swing.*;
 
 import ressources.Audio;
+import ressources.Images;
 import ressources.Maps;
 import simplewars.affichage.PanelCarte;
 import simplewars.affichage.PanelInformations;
@@ -71,8 +72,27 @@ public class Jeu extends FenetreAbstraite {
         this.add(panelCarte,BorderLayout.CENTER);
         this.add(panelInfo,BorderLayout.EAST);
         
+        // stop musique a la fermeture
+        
+        addWindowListener(new WindowAdapter()
+        {
+            public void windowClosing(WindowEvent e)
+            {
+                musique.stop();
+            }
+        });
+        
+        initCursor();
+        
         setVisible(true);
      }
+    
+    private void initCursor() {
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        Image image = toolkit.getImage(Images.CURSORBIG);
+        Cursor c = toolkit.createCustomCursor(image , new Point(0,0), "pig");
+        setCursor (c);
+    }
     
 	// renvoie le fichier wave contenant le message d'accueil
 	protected  String wavAccueil() {
