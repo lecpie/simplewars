@@ -66,7 +66,7 @@ public class Chateau extends Batiment {
         try {
             bufferedImage = ImageIO.read(new File(imageLink));
         } catch (Exception e) {
-            System.out.println("Fichier" + imageLink + " manquant ! ");
+            System.err.println("Fichier" + imageLink + " manquant ! ");
         }
     }
 	
