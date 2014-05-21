@@ -203,7 +203,6 @@ public void decolourCase(Coordonnee c) {
 
 public void nextMode() {
     this.modeDeVisibilite = modeDeVisibilite.getNext();
-    System.out.println(modeDeVisibilite);
     repaint();
 }
 

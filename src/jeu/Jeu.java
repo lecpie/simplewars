@@ -131,7 +131,6 @@ public class Jeu extends FenetreAbstraite {
         
         if (e.getKeyCode()==KeyEvent.VK_F3){
             panelCarte.nextMod();
-            System.out.println("next mod");
         }
     }
     
