@@ -96,12 +96,12 @@ public class Jeu extends FenetreAbstraite {
     
 	// renvoie le fichier wave contenant le message d'accueil
 	protected  String wavAccueil() {
-		return "../ressources/sons/accueil.wav";
+		return Audio.ACCUEIL;
 	}
 	
 	// renvoie le fichier wave contenant la règle du jeu
 	protected  String wavRegleJeu() {
-		return "../ressources/sons/aideF1.wav";
+		return Audio.REGLES;
 	}
 	
 	// renvoie le fichier wave contenant la règle du jeu

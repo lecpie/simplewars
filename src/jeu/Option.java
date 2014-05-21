@@ -18,6 +18,7 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.table.TableCellRenderer;
 
+import ressources.Audio;
 import ressources.Images;
 import ressources.Ressources;
 
@@ -57,17 +58,17 @@ public class Option extends FenetreAbstraite{
     
 	// renvoie le fichier wave contenant le message d'accueil
 	protected  String wavAccueil() {
-		return "../ressources/sons/accueilOption.wav";
+		return Audio.ACCUEILOPT;
 	}
 	
 	// renvoie le fichier wave contenant la règle du jeu
 	protected  String wavRegleJeu() {
-		return "../ressources/sons/accueilOption.wav";
+		return Audio.REGLES;
 	}
 	
 	// renvoie le fichier wave contenant la règle du jeu
 	protected  String wavAide() {
-		return "../ressources/sons/aide.wav";
+		return Audio.AIDE;
 	}
 
     public void init() {

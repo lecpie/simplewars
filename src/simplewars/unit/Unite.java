@@ -39,8 +39,6 @@ public abstract class Unite {
 	public abstract String getSoundSelected();
 	
 	public void playSoundSelected() {
-		System.out.println("exist : " + new File(getSoundSelected()).exists());
-		System.out.println(getSoundSelected());
 		Audio.playSound(getSoundSelected());
 	}
 	

@@ -104,7 +104,6 @@ public class MapReader {
      * @param j
      */
     public void interpreteMapElement (Cellule[][] grille, String s,int i,int j){
-        //System.out.println("une interpretation "+s+" ("+i+","+j+")");
         switch (s){
         case "0":grille[i][j]= new Cellule(new Coordonnee(i,j),new TerrainPraticable(Images.pickATerrainPraticable()));break;
         case "1":grille[i][j]= new Cellule(new Coordonnee(i,j),new TerrainImpraticable(Images.pickATerrainImpraticable()));break;

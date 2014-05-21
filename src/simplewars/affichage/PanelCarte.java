@@ -27,13 +27,11 @@ public class PanelCarte extends JPanel {
     	
         largeur = map.getLargeur();
         hauteur = map.getHauteur();
-        System.out.println("largeur :"+largeur+" ; "+"hauteur :"+hauteur);
         tableauDeCellules = new AfficheurCellule[largeur][hauteur];
         
         setLayout(new GridLayout(largeur,hauteur));
         for (int i = 0; i <largeur ; i++) {
             for (int j = 0; j <hauteur ; j++){
-                System.out.println(i+"   "+j);
                 AfficheurCellule aC = new AfficheurCellule(map.getCellule(new Coordonnee(i,j)));
                 tableauDeCellules[i][j] = aC;
                 add(aC);
@@ -49,7 +47,6 @@ public class PanelCarte extends JPanel {
         //Propagation du controlleur aux cellules
         for (int i = 0; i < tableauDeCellules.length ; i++) {
             for (int j = 0; j < tableauDeCellules[i].length ; j++){
-                System.out.println("f0 "+i+"  "+j);
                 tableauDeCellules[i][j].setControl(c);
              
             }
