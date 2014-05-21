@@ -46,6 +46,10 @@ public class Controlleur {
 	
 	private Joueur[] joueurs;
 	
+	public Joueur getJoueur(int ind) {
+	    return joueurs[ind];
+	}
+	
 	private int joueurCourrant;
 	private HashMap <Coordonnee,ColourCaseListener> colourCaseListener = new HashMap<>();
 	

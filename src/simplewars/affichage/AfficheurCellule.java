@@ -123,13 +123,16 @@ public void paintCellule(Graphics g) {
         if (modeDeVisibilite == Modes.TRESVISIBLE){}
         else {
         
-        if (u.getJoueur().equals(controlleur.getJoueurCourant())) {
-            if (u.isDejaDeplace())
+        if (u.getJoueur().equals(controlleur.getJoueur(1))) {
+            if (u.isDejaDeplace()&&u.getJoueur().equals(controlleur.getJoueurCourant()))
                 setImage(Images.selecNOIR, g);
             else
-            setImage(Images.selecVERT, g);
+                setImage(Images.selecVERT, g);
         } else {
-            setImage(Images.selecROUGE, g);
+            if (u.isDejaDeplace()&&u.getJoueur().equals(controlleur.getJoueurCourant()))
+                setImage(Images.selecNOIR, g);
+           else
+               setImage(Images.selecROUGE, g);
         }
         
         }
