@@ -125,6 +125,9 @@ public void paintCellule(Graphics g) {
         else {
         
         if (u.getJoueur().equals(controlleur.getJoueurCourant())) {
+            if (u.isDejaDeplace())
+                setImage(Images.selecNOIR, g);
+            else
             setImage(Images.selecVERT, g);
         } else {
             setImage(Images.selecROUGE, g);
