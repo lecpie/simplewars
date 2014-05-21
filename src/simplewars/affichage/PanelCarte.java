@@ -52,4 +52,16 @@ public class PanelCarte extends JPanel {
             }
         }     
     }
+ public void nextMod () {
+      
+        
+        
+        //Propagation du controlleur aux cellules
+        for (int i = 0; i < tableauDeCellules.length ; i++) {
+            for (int j = 0; j < tableauDeCellules[i].length ; j++){
+                tableauDeCellules[i][j].nextMode();
+             
+            }
+        }     
+    }
 }

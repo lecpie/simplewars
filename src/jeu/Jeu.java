@@ -37,7 +37,7 @@ public class Jeu extends FenetreAbstraite {
 	private SIVOXDevint musique;
 	
 	OptionData options;
-	
+	PanelCarte panelCarte;
 	// appel au constructeur de la classe mère
     public Jeu(String title) {
     	super(title);
@@ -52,7 +52,7 @@ public class Jeu extends FenetreAbstraite {
 	    MapReader mapReader = new MapReader();
 		Map map = mapReader.readMap(Maps.getMap(iMap));
 		
-		PanelCarte panelCarte = new PanelCarte(map);
+		panelCarte = new PanelCarte(map);
 		PanelInformations panelInfo = new PanelInformations(options);
 	    	    
 	    Controlleur c = new Controlleur(map, this, panelInfo, options);
@@ -117,12 +117,22 @@ public class Jeu extends FenetreAbstraite {
  
     // évènements clavier
     public void keyPressed(KeyEvent e) {
+
     	// appel à la méthode mère qui gère les évènements ESC, F1, F3, F4
     	super.keyPressed(e);
     	// cas particulier pour ce jeu : la touche F5
     	if (e.getKeyCode()==KeyEvent.VK_F5){
     	   	voix.playText("Vous venez d'appuyer sur EFFE 5");
     	}
+    
+    }
+    
+    public void keyReleased (KeyEvent e){
+        
+        if (e.getKeyCode()==69){
+            panelCarte.nextMod();
+            System.out.println("next mod");
+        }
     }
     
 	/**

@@ -56,6 +56,7 @@ public abstract class FenetreAbstraite extends  DevintFrameListener{
     	if (e.getKeyCode()==KeyEvent.VK_F2){
     		voix.playWav(wavAide());
     	}
+    	
     }
 
 	/**
