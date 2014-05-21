@@ -2,6 +2,7 @@ package jeu;
 
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,7 +22,6 @@ import javax.swing.table.TableCellRenderer;
 import ressources.Audio;
 import ressources.Images;
 import ressources.Ressources;
-
 import devintAPI.*;
 
 /** Cette classe est un exemple d'interface pour les options
@@ -109,6 +109,12 @@ public class Option extends FenetreAbstraite{
     	
     	this.add(panneauOptions, BorderLayout.CENTER);
     	this.add(boutonValider, BorderLayout.SOUTH);
+    	
+    	// Aide F4
+    	JLabel aideF4 = new JLabel("Appuyez sur F4 pendant une partie pour changer le mode d'affichage");
+    	aideF4.setFont(new Font("Times",1,40));
+    	
+    	this.add(aideF4, BorderLayout.NORTH);
     	
     	// Appliquer font
     	for (JComponent cmp : new JComponent[] {labelJoueur1, labelJoueur2, labelMusique,

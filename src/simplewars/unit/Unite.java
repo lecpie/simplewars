@@ -1,7 +1,6 @@
 package simplewars.unit;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
 
 import ressources.Audio;
 import simplewars.joueur.Joueur;
