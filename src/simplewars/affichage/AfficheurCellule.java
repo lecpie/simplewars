@@ -117,14 +117,17 @@ public void paintCellule(Graphics g) {
     }
 
     if (cellule.contientUnite()) {
-
         Unite u = cellule.getUnit();
+        if (modeDeVisibilite == Modes.TRESVISIBLE){}
+        else {
+        
         if (u.getJoueur().equals(controlleur.getJoueurCourant())) {
             setImage(Images.selecVERT, g);
         } else {
             setImage(Images.selecROUGE, g);
         }
-
+        
+        }
         if (modeDeVisibilite == Modes.PEUVISIBLE) {
             
             BufferedImage bI = u.getBufferedImage();
