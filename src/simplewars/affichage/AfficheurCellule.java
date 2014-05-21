@@ -123,7 +123,7 @@ public void paintCellule(Graphics g) {
         if (modeDeVisibilite == Modes.TRESVISIBLE){}
         else {
         
-        if (u.getJoueur().equals(controlleur.getJoueur(1))) {
+        if (u.getJoueur().equals(controlleur.getJoueur(0))) {
             if (u.isDejaDeplace()&&u.getJoueur().equals(controlleur.getJoueurCourant()))
                 setImage(Images.selecNOIR, g);
             else
