@@ -98,7 +98,10 @@ public class PanelInformations extends JPanel implements JoueurChangedListener {
         	c.setFont(new Font("sansserif", Font.BOLD, 50));
         }
         
-
+        tourSuivant.setFocusable(false);
+        regles.setFocusable(false);
+        controles.setFocusable(false);
+        
         setLayout(new BorderLayout());
 
         add(joueurActuel, BorderLayout.CENTER);
@@ -120,6 +123,7 @@ public class PanelInformations extends JPanel implements JoueurChangedListener {
     public void changerJoueur() {
         control.joueurSuivant();
         fireJoueurChangedEvent();
+        
     }
 
     public void fireJoueurChangedEvent() {
