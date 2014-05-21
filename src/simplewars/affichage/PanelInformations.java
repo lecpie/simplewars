@@ -49,7 +49,7 @@ public class PanelInformations extends JPanel implements JoueurChangedListener {
         listenersChangementJoueur = new EventListenerList();
 
         tourSuivant = new JButton("suivant");
-        
+        joueurActuel.setForeground(Color.GREEN);
         JPanel panneauInstructions = new JPanel();
         panneauInstructions.setLayout(new GridLayout(2, 1));
         
@@ -123,7 +123,7 @@ public class PanelInformations extends JPanel implements JoueurChangedListener {
        
         
         joueurActuel.setText(j.getNom());
-        joueurActuel.setForeground(Color.RED);
+        
         if(!rouge)
         {
         	joueurActuel.setForeground(Color.GREEN);
