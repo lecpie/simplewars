@@ -1,11 +1,13 @@
 package simplewars.affichage;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Dimension;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -16,7 +18,6 @@ import javax.swing.event.EventListenerList;
 
 import jeu.Controlleur;
 import jeu.OptionData;
-
 import ressources.Audio;
 import ressources.Images;
 import simplewars.joueur.Joueur;
@@ -39,7 +40,7 @@ public class PanelInformations extends JPanel implements JoueurChangedListener {
     private JButton tourSuivant, regles, controles;
     private JLabel joueurActuel;
     private Dimension dimension = new Dimension(300, 300);
-
+    boolean rouge = false;
     private Controlleur control;
 
     private EventListenerList listenersChangementJoueur;
@@ -117,7 +118,20 @@ public class PanelInformations extends JPanel implements JoueurChangedListener {
 
     public void changed(JoueurChangedEvent e) {
         Joueur j = e.getJoueur();
+        if(!rouge) rouge = true;
+        else rouge = false;
+       
+        
         joueurActuel.setText(j.getNom());
+        joueurActuel.setForeground(Color.RED);
+        if(!rouge)
+        {
+        	joueurActuel.setForeground(Color.GREEN);
+        }
+        else
+        {
+        	joueurActuel.setForeground(Color.RED);
+        }
     }
 
     public void changerJoueur() {
