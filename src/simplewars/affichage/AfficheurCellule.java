@@ -102,7 +102,10 @@ public void paintCellule(Graphics g) {
             setImage(Images.selecteurJauneB, g);
     }
     if (this.onOver) {
-        setImage(Images.selecBLEU, g);
+        if (modeDeVisibilite.equals(Modes.TRESVISIBLE))
+            setImage(Images.selecteurNoirB,g);
+        else
+            setImage(Images.selecteurBleuB, g);
     }
     if (cellule.contientBatiment()) {
         Batiment u = cellule.getBatiment();
