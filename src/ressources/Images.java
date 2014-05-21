@@ -66,25 +66,24 @@ public class Images {
     public static final String selecNOIR = selecteur + "/dejadeplace.png";
     public static final String selecHACHURES = selecteur + "/hachures.png";
 
-    public static BufferedImage selecteurJauneB, arch_G, arch_D, chev_D,
-            chev_G, piq_D, piq_G, arch, piq, chev,arch_c,piq_c,chev_c,selecHachures;
+    public static BufferedImage selecteurJauneB,selecteurVertB,selecteurRougeB,selecteurBleuB,selecteurNoirB, arch_G, arch_D, chev_D,
+            chev_G, piq_D, piq_G, arch, piq, chev,arch_c,piq_c,chev_c,selecteurHachures;
 
     // Set les images
     static {
 
         try {
-            // TODO serieux c'est ultra salle ca, vraiment : faire les choses
-            // bien ou ne rien faire
+            
             selecteurJauneB = ImageIO.read(new File(selecJAUNE));
-            final BufferedImage selecteurVertB = ImageIO.read(new File(
+            selecteurVertB = ImageIO.read(new File(
                     selecVERT));
-            final BufferedImage selecteurRougeB = ImageIO.read(new File(
+            selecteurRougeB = ImageIO.read(new File(
                     selecROUGE));
-            final BufferedImage selecteurBleuB = ImageIO.read(new File(
+            selecteurBleuB = ImageIO.read(new File(
                     selecBLEU));
-            final BufferedImage selecteurNoirB = ImageIO.read(new File(
+            selecteurNoirB = ImageIO.read(new File(
                     selecNOIR));
-            final BufferedImage selecteurHachures = ImageIO.read(new File(
+            selecteurHachures = ImageIO.read(new File(
                     selecHACHURES));
 
             arch_G = ImageIO.read(new File(ARCHERG));

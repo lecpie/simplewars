@@ -4,8 +4,13 @@ import java.util.Arrays;
 
 public enum Modes {
 
+    // images / couleurs
     PEUVISIBLE("visibilité minimale"),
+    
+    // formes / couleurs
     MOYENNEMENTVISIBLE("visibilité moyenne"),
+    
+    // formes / noir et blanc
     TRESVISIBLE("visibilité maximale");
     
     private String name;

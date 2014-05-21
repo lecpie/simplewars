@@ -40,7 +40,7 @@ public class AfficheurCellule extends JPanel implements MouseListener,ColourCase
     private boolean onOver=false;
 
     
-    
+
     private Modes modeDeVisibilite = Modes.PEUVISIBLE;
     
     
@@ -88,7 +88,6 @@ public class AfficheurCellule extends JPanel implements MouseListener,ColourCase
             try {
                 BufferedImage lel = cellule.getTerrain().getBufferedImage();
                 g.drawImage(lel,0,0, getWidth(), getHeight(),this);
-
             }catch(Exception e){
                 System.err.println("image batiment introuvable");
             }
@@ -97,7 +96,10 @@ public class AfficheurCellule extends JPanel implements MouseListener,ColourCase
            
         }
         if(this.belongToChampDeMovement){
-            setImage(Images.selecJAUNE,g);
+            if (modeDeVisibilite.equals(Modes.TRESVISIBLE))
+                setImage(Images.selecteurHachures,g);
+                else
+                    setImage(Images.selecteurJauneB,g);
         }
         if(this.onOver){
             setImage(Images.selecBLEU,g);
