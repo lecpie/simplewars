@@ -6,6 +6,8 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.Dimension;
 
 import javax.swing.ImageIcon;
@@ -15,6 +17,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.event.EventListenerList;
+
+
+
+
+
 
 import jeu.Controlleur;
 import jeu.OptionData;
@@ -36,7 +43,7 @@ public class PanelInformations extends JPanel implements JoueurChangedListener {
 	 * 
 	 */
     private static final long serialVersionUID = 1L;
-
+    private JFrame aide = new JFrame();
     private JButton tourSuivant, regles, controles;
     private JLabel joueurActuel;
     private Dimension dimension = new Dimension(300, 300);
@@ -81,17 +88,56 @@ public class PanelInformations extends JPanel implements JoueurChangedListener {
 
         regles.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                JFrame aide = new JFrame();
-                aide.setSize(800, 1000);
+                
+                
+                
                 JPanel jp = new JPanel();
                 // aide.add()
                 JLabel image = new JLabel(new ImageIcon(
                         Images.AIDE));
+               
+                JButton sortir = new JButton("Sortir");
+                sortir.setFont( new Font("Times",1,40));
+                sortir.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent arg0) {
+                       aide.dispose();
+                    }
+                });
+                jp.add(sortir);
                 jp.add(image);
                 aide.add(jp);
+                aide.pack();
                 aide.setVisible(true);
             }
         });
+        KeyListener daide=new KeyListener(){
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				System.out.println(e.getKeyCode());
+		    	if (e.getKeyCode()==KeyEvent.VK_ESCAPE){
+		    		
+		    	   	aide.dispose();
+		    	}
+				
+			}
+
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+        	
+        };
+        addKeyListener(daide);
         
         joueurActuel = new JLabel(options.getNomJoueur1());
 
