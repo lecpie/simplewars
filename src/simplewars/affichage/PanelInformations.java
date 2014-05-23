@@ -154,12 +154,13 @@ public class PanelInformations extends JPanel implements JoueurChangedListener {
         add(joueurActuel, BorderLayout.CENTER);
 
         add(tourSuivant, BorderLayout.NORTH);
-        
+        joueurActuel.setHorizontalAlignment(JLabel.CENTER);
         panneauInstructions.add(regles);
         panneauInstructions.add(controles);
         
         add(panneauInstructions, BorderLayout.SOUTH);
-        joueurActuel.setForeground(Color.GREEN);
+        joueurActuel.setForeground(new Color(58,157,35));
+        
 
     }
 
@@ -173,7 +174,7 @@ public class PanelInformations extends JPanel implements JoueurChangedListener {
         
         if(!rouge)
         {
-        	joueurActuel.setForeground(Color.GREEN);
+        	joueurActuel.setForeground(new Color(58,157,35));
         }
         else
         {
