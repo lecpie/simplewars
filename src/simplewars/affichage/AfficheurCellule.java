@@ -95,7 +95,7 @@ public void paintCellule(Graphics g) {
 
     }
     if (this.belongToChampDeMovement) {
-        if (modeDeVisibilite.equals(Modes.TRESVISIBLE))
+        if (modeDeVisibilite.equals(Modes.TRESVISIBLE) )
             setImage(Images.selecteurHachures, g);
         else
             setImage(Images.selecteurJauneB, g);
@@ -120,7 +120,7 @@ public void paintCellule(Graphics g) {
 
     if (cellule.contientUnite()) {
         Unite u = cellule.getUnit();
-        if (modeDeVisibilite == Modes.TRESVISIBLE){}
+        if (modeDeVisibilite == Modes.TRESVISIBLE  || modeDeVisibilite.equals(Modes.MOYENNEMENTVISIBLE)){}
         else {
         
         if (u.getJoueur().equals(controlleur.getJoueur(0))) {
